@@ -348,7 +348,7 @@ int 	cond1, cond2;
 	if (N == 0)
 		{
 		printf ("\tHmmm, all these pairs seem to be the same.\n");
-		return;
+		return NULL;
 		}
 	if (ranksort (rank, NULL, NULL, N))
 		ERRMSG0 (could not rank data for Wilcoxon test)
@@ -457,7 +457,7 @@ dospearman ()
 		{
 		r = cor (Condat[0], Condat[1], Count);
 		tprint ("rho", r);
-		return;
+		return NULL;
 		}
 	
 #define	LFORMAT    "%-8.8s "

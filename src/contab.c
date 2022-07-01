@@ -187,7 +187,7 @@ Posint	source;
 	if (df < 1)
 		{
 		WARNING (no degrees of freedom for test)
-		return;
+		return NULL;
 		}
 	
 	if (DoYates && df == 1) /* correction not applied if df > 1 */

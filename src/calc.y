@@ -417,7 +417,7 @@ process (filename) char *filename;
 	else if ((ioptr = fopen (filename, "r")) == NULL)
 		{
 		fprintf (stderr, "Can't open %s\n", filename);
-		return;
+		return NULL;
 		}
 	if (filename)
 		fprintf (Outfile, "Reading from %s\n", filename);
@@ -495,15 +495,15 @@ control (key) char *key;
 				fprintf (Outfile, "Current_Format = '%s'\n", Format);
 			else
 				strcpy (Format+1, key+1);
-			return;
+			return NULL;
 		case CTRL_PRINT:
 			Printequation = !Printequation;
-			return;
+			return NULL;
 		case CTRL_READ:
 			while (iscntrl (*key) || isspace (*key))
 				key++;
 			process (key);
-			return;
+			return NULL;
 		case CTRL_WRITE:
 		case CTRL_VAR:
 			while (*key && (iscntrl (*key) || isspace (*key)))
@@ -541,7 +541,7 @@ control (key) char *key;
 				(void) fclose (Outfile);
 				Outfile = saveoutfile;
 				}
-			return;
+			return NULL;
 		default:
 			fprintf (stderr, "Unknown control character.\n");
 		}
@@ -623,11 +623,11 @@ ENODE *expression;
 ptree (ioptr, expression) ENODE *expression; FILE *ioptr;
 	{
 	if (expression == ENULL)
-		return;
+		return NULL;
 	if (expression->etype == VARIABLE)
 		{
 		fprintf (ioptr, "%s", Varname[expression->contents.var]);
-		return;
+		return NULL;
 		}
 	else if (expression->etype == NUMBER)
 		{
@@ -635,7 +635,7 @@ ptree (ioptr, expression) ENODE *expression; FILE *ioptr;
 			fprintf (ioptr, "UNDEFINED");
 		else
 			fprintf (ioptr, Format, *expression->contents.num);
-		return;
+		return NULL;
 		}
 	switch	(expression->contents.opr)
 		{
@@ -650,7 +650,7 @@ ptree (ioptr, expression) ENODE *expression; FILE *ioptr;
 		case SIN: fprintf (ioptr, "sin("); break;
 		case COS: fprintf (ioptr, "cos("); break;
 		case '_' : putc ('-', ioptr);
-			ptree (ioptr, expression->right); return;
+			ptree (ioptr, expression->right); return NULL;
 		case '?':
 			fprintf (ioptr, "(if ");
 			ptree (ioptr, expression->left);
@@ -663,7 +663,7 @@ ptree (ioptr, expression) ENODE *expression; FILE *ioptr;
 				}
 			else ptree (ioptr, expression->right);
 			putc (')', ioptr);
-			return;
+			return NULL;
 		default: putc ('(', ioptr);
 			ptree (ioptr, expression->left);
 			switch (expression->contents.opr)

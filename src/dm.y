@@ -1057,7 +1057,7 @@ eval (expression) ENODE *expression;
 #ifdef PTREE
 ptree (tree) ENODE *tree;
 	{
-	if (tree == NULL) return;
+	if (tree == NULL) return NULL;
 	if (tree->etype == FLOATPTR)
 		if (*tree->contents.num < -LARGE)
 			{

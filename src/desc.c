@@ -91,7 +91,7 @@ initial (argc, argv) int argc; char **argv;
 		{
 		Storedata = TRUE;
 		Stats = TRUE;
-		return;
+		return NULL;
 		}
 	while ((C = getopt (argc, argv, "cfF:t:hi:m:M:posvOVL")) != EOF)
 		switch (C)

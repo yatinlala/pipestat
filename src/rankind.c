@@ -277,7 +277,7 @@ domedian ()
 	if (n == 0)
 		{
 		printf ("\tHmmm, all these numbers seem to equal the median\n");
-		return;
+		return NULL;
 		}
 	if (Nconds == 2 && n <= NFISHER)
 		fishtest (above[0], above[1], below[0], below[1]);
@@ -320,7 +320,7 @@ double	*sumrank;   /* sum of all ranks in conditions */
 	if (fzero (T))
 		{
 		printf ("\tHmmm, all these numbers seem tied\n");
-		return;
+		return NULL;
 		}
 	sd = sqrt ( T * n1n2 * (n1+n2+1) / 12.0 );
 	z = (U - mean) / sd;
@@ -363,7 +363,7 @@ double	*sumrank;   /* sum of all ranks in conditions */
 	if (fzero (T))
 		{
 		printf ("\tHmmm, all these numbers seem tied\n");
-		return;
+		return NULL;
 		}
 	tprint ("Tie correction factor", T);
 	H /= T;

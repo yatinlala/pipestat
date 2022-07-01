@@ -281,13 +281,13 @@ int 	dfwithin;        /* degrees of freedom numerator */
 	if (dfbetween <= 0 || dfwithin <= 0)
 		{
 		WARNING (invalid degrees of freedom)
-		return;
+		return NULL;
 		}
 
 	if (sswithin < FZERO)
 		{
 		WARNING (zero error term implies infinite F or t statistic);
-		return;
+		return NULL;
 		}
 
 	msbetween = ssbetween / dfbetween;

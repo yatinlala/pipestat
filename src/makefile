@@ -16,6 +16,7 @@
 DESTDIR=../../bin#                            destination directory
 DESTDIR=../bin#                               destination directory
 CFLAGS =-O#                                   C Compiler Options - add -Wall for all warnings
+CFLAGS += -Wno-implicit-function-declaration
 LINK   =$(CC) $(CFLAGS) -o $(DESTDIR)/$@#     Generic link command
 LIBS   =-lm#                                  libraries needed (math)
 EDITOR =/usr/ucb/vi#                          editor to call on make edit

@@ -61,13 +61,13 @@ Boole	yates;      /* should Yates' correction for continuity be used? */
 	int 	smallcount = 0;    /* count of cells with expected values < SMALL */
 	
 	if (nrows > MAXLEV || ncols > MAXLEV)
-		return;
+		return NULL;
 	
 	df = (nrows - 1) * (ncols - 1);
 	if (df > 1)  /* only use yates' correction when df == 1 */
 		yates = FALSE;
 	else if (df <= 0)
-		return;
+		return NULL;
 	
 	for (row = 0; row < nrows; row++)
 		rtotal[row] = 0;

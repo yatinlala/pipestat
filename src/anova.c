@@ -218,7 +218,7 @@ int 	n;
 	
 	for (i = 0; i < n; i++)
 		if (!number (vec[i]))
-			return;
+			return NULL;
 	
 	qsort ((char *) vec, n, sizeof (char *), ncmp);
 	

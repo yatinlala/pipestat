@@ -124,7 +124,7 @@ int 	donum;    /* should numbering be done? */
 double	base;     /* the base label to be numbered */
 double	interval; /* the size of the interval between labels */
 	{
-	if (!donum) return;
+	if (!donum) return NULL;
 	if ((n >= 0) && ((n%donum) == 0))
 		printf ("%12.4f	", n*interval + base);
 	else
